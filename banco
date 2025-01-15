@@ -1,0 +1,185 @@
+# DDL
+CREATE TABLE pessoa (
+	id serial primary key,
+	nome varchar(100) not null,
+	cpf char(11) not null,
+	email varchar(255)
+);
+
+CREATE TABLE uf (
+	id integer primary key,
+	sigla char(2) not null,
+	nome varchar(19) not null
+);
+
+ALTER TABLE pessoa ADD column uf integer;
+
+ALTER TABLE pessoa ADD foreign key (uf) references uf(id); 
+
+
+# DML
+insert into pessoa (nome, cpf, email) values ('Átila', '2342423', 'email@teste.com'); 
+
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Dr. Fernando Lima', '90997307558', 'augustorezende@pires.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Daniela Cardoso', '57314694577', 'llopes@monteiro.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Enzo Gabriel da Costa', '86587657450', 'ryancardoso@lima.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Dr. Levi Cunha', '11514278624', 'da-cunhamelissa@bol.com.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Emanuel Farias', '88676876532', 'heitorrocha@viana.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Ana Julia da Cruz', '20682519603', 'xcostela@ig.com.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Isaac Cardoso', '28184018064', 'fernando23@moraes.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Carolina Novaes', '78893166472', 'caioramos@hotmail.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Ana Lívia Araújo', '34712336429', 'da-conceicaobruno@yahoo.com.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Vitor Hugo Duarte', '13061922557', 'cunhastella@fogaca.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Maria Sophia Sales', '95939949894', 'nascimentomatheus@cunha.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Beatriz Carvalho', '97326745002', 'martinsdaniel@uol.com.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Luiz Gustavo Rezende', '48470669041', 'joao-vitor93@ig.com.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Erick Nogueira', '96422698953', 'camila17@monteiro.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Lara Lopes', '65016270852', 'luizacostela@correia.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Bryan Nogueira', '60775673448', 'tmoura@da.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Bárbara da Costa', '56133172450', 'sophie65@gmail.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Sr. Luiz Felipe Viana', '83666883412', 'julia06@hotmail.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Dra. Carolina Aragão', '06872708845', 'inovaes@pires.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Danilo da Rocha', '01859316958', 'gda-paz@uol.com.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Heloísa Mendes', '59346837262', 'nunesana-julia@hotmail.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Marcela Ribeiro', '95991778937', 'sgoncalves@farias.net');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Igor Porto', '04109751169', 'maria-alice76@cunha.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Paulo Gomes', '46583556031', 'salesmirella@ig.com.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Dra. Rebeca Mendes', '13380381368', 'aragaolucca@santos.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Lívia da Costa', '38245309716', 'kaique41@yahoo.com.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Davi Luiz Araújo', '39205138230', 'maysa55@cavalcanti.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Maria Julia Nunes', '73005262037', 'da-conceicaogustavo-henrique@mendes.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Ryan Azevedo', '48682833667', 'larissa46@hotmail.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Alexandre Dias', '46340472171', 'vsilveira@yahoo.com.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Maria Freitas', '73594442499', 'sophia50@fernandes.net');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Júlia da Mota', '23338614853', 'pedro-lucas09@ribeiro.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Diego da Paz', '99993751559', 'ialves@almeida.net');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Ana Laura Peixoto', '43285508690', 'aliciacardoso@freitas.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Dr. Daniel Rezende', '04070311310', 'pedro-henriquerezende@gmail.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Sofia Pereira', '39926039446', 'sarah54@melo.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Bianca Campos', '69213999263', 'eoliveira@hotmail.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Felipe Almeida', '48122278443', 'oliveiraana-beatriz@yahoo.com.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Rafaela Pinto', '97567606970', 'joao-lucasalves@yahoo.com.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Evelyn Costa', '15311897752', 'manuela60@correia.org');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Sophie Caldeira', '84454487008', 'eduardosales@moura.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Dr. João Vitor da Cruz', '44312333696', 'dda-mata@yahoo.com.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Gabrielly Lopes', '59127536912', 'isabella30@yahoo.com.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Gabriela Melo', '32593207597', 'aragaoalexandre@jesus.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Maria Cecília da Mota', '58076925257', 'murilosouza@hotmail.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Ana Lívia Dias', '73943661482', 'enzo-gabriel64@nunes.org');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Dr. João Souza', '81329924565', 'rodrigueserick@santos.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Srta. Júlia Barbosa', '91107937627', 'ana37@yahoo.com.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Gabriel Martins', '78151296808', 'irodrigues@uol.com.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Laura Lima', '91054100699', 'maria-vitoriafreitas@da.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Francisco Novaes', '49117300759', 'sophia82@uol.com.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Sr. Fernando da Rosa', '65759885101', 'vsouza@da.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Calebe Cunha', '74790826410', 'alvesana-vitoria@souza.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Lucca Silva', '49649929645', 'rochaaugusto@nogueira.net');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Nicolas Vieira', '39587021285', 'ianalves@cardoso.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Juan Aragão', '49724915687', 'da-cunhaisabelly@dias.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Cauã Costela', '80988226170', 'renan58@rocha.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Rodrigo da Mota', '00852219069', 'olivia53@moreira.net');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Laís Cardoso', '19463387531', 'raul32@uol.com.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Sr. Lucas Lopes', '59286561036', 'joao-guilhermeviana@da.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Sr. Diogo das Neves', '07144795890', 'thiagoalmeida@rezende.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Emanuelly Barros', '42008928095', 'salesmaria-sophia@uol.com.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Evelyn Correia', '10742803724', 'catarinacunha@da.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Davi Lucas da Rosa', '88487475276', 'murilo51@cardoso.net');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Maria Sophia Barros', '04085194722', 'enzo-gabrielferreira@hotmail.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Heitor Rocha', '45937556460', 'yuri33@ig.com.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Mariane Rocha', '03824733052', 'maria-vitoria47@pinto.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Sr. Juan Teixeira', '84980198435', 'enzo80@yahoo.com.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('João Guilherme da Mota', '94174703628', 'cpinto@ferreira.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Caroline Barros', '51100318157', 'almeidagiovanna@hotmail.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Gustavo Henrique Souza', '80826302783', 'leandro49@campos.net');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Srta. Luana Lima', '58142194739', 'ferreiracaua@gmail.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Lucas Viana', '21170278141', 'fernandonascimento@martins.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Maria Clara da Cunha', '05411303195', 'cauecavalcanti@campos.net');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Mariana Nascimento', '21744918015', 'peixotoleticia@bol.com.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Sr. André Almeida', '94313268206', 'bryanda-mata@hotmail.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Felipe Porto', '36705573893', 'calebe28@silveira.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Erick Barros', '62113320766', 'caldeiramatheus@fogaca.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Isabel Alves', '69770971285', 'castrocarlos-eduardo@campos.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Eduardo Porto', '26300172356', 'pereiraenzo-gabriel@hotmail.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Dr. Miguel Gonçalves', '19758183880', 'lorenzo76@da.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Pedro Lucas Mendes', '60940398075', 'goncalvesmurilo@alves.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Mariane Freitas', '31318383376', 'mouramarina@gmail.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Levi Dias', '59173165301', 'pietrocardoso@hotmail.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Luigi Dias', '97894274556', 'nsales@ig.com.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Bruno Alves', '01786560084', 'joao-felipelima@da.org');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Dra. Giovanna Monteiro', '24321241128', 'ngomes@sales.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Cauã Mendes', '05661480035', 'stephanymelo@ig.com.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Sra. Luana Fernandes', '86654227462', 'martinsrebeca@souza.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Bruna das Neves', '87067007211', 'da-matasofia@uol.com.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Vinicius Silva', '95616877733', 'noah58@uol.com.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Raquel Souza', '47271546083', 'joao-gabrielaragao@hotmail.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Amanda Peixoto', '68064392600', 'ceciliapereira@pereira.org');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Benício Nogueira', '71629404416', 'caioalves@rezende.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Pietro Farias', '84324092399', 'fernandesvitor@gmail.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Isabella da Conceição', '97032404147', 'milena25@carvalho.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Kaique Lima', '31148242103', 'joanacastro@hotmail.com');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Ian Barbosa', '02534046268', 'salves@aragao.org');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Guilherme Almeida', '44311244717', 'martinsisabella@yahoo.com.br');
+INSERT INTO pessoa (nome, cpf, email) VALUES ('Agatha Oliveira', '30307017590', 'eduardavieira@barbosa.br');
+
+INSERT INTO uf (id, sigla, nome) VALUES (12, 'AC', 'Acre');
+INSERT INTO uf (id, sigla, nome) VALUES (27, 'AL', 'Alagoas');
+INSERT INTO uf (id, sigla, nome) VALUES (13, 'AM', 'Amazonas');
+INSERT INTO uf (id, sigla, nome) VALUES (16, 'AP', 'Amapá');
+INSERT INTO uf (id, sigla, nome) VALUES (29, 'BA', 'Bahia');
+INSERT INTO uf (id, sigla, nome) VALUES (23, 'CE', 'Ceará');
+INSERT INTO uf (id, sigla, nome) VALUES (53, 'DF', 'Distrito Federal');
+INSERT INTO uf (id, sigla, nome) VALUES (32, 'ES', 'Espírito Santo');
+INSERT INTO uf (id, sigla, nome) VALUES (52, 'GO', 'Goiás');
+INSERT INTO uf (id, sigla, nome) VALUES (21, 'MA', 'Maranhão');
+INSERT INTO uf (id, sigla, nome) VALUES (31, 'MG', 'Minas Gerais');
+INSERT INTO uf (id, sigla, nome) VALUES (50, 'MS', 'Mato Grosso do Sul');
+INSERT INTO uf (id, sigla, nome) VALUES (51, 'MT', 'Mato Grosso');
+INSERT INTO uf (id, sigla, nome) VALUES (15, 'PA', 'Pará');
+INSERT INTO uf (id, sigla, nome) VALUES (25, 'PB', 'Paraíba');
+INSERT INTO uf (id, sigla, nome) VALUES (26, 'PE', 'Pernambuco');
+INSERT INTO uf (id, sigla, nome) VALUES (22, 'PI', 'Piauí');
+INSERT INTO uf (id, sigla, nome) VALUES (41, 'PR', 'Paraná');
+INSERT INTO uf (id, sigla, nome) VALUES (33, 'RJ', 'Rio de Janeiro');
+INSERT INTO uf (id, sigla, nome) VALUES (24, 'RN', 'Rio Grande do Norte');
+INSERT INTO uf (id, sigla, nome) VALUES (43, 'RS', 'Rio Grande do Sul');
+INSERT INTO uf (id, sigla, nome) VALUES (11, 'RO', 'Rondônia');
+INSERT INTO uf (id, sigla, nome) VALUES (14, 'RR', 'Roraima');
+INSERT INTO uf (id, sigla, nome) VALUES (42, 'SC', 'Santa Catarina');
+INSERT INTO uf (id, sigla, nome) VALUES (35, 'SP', 'São Paulo');
+INSERT INTO uf (id, sigla, nome) VALUES (28, 'SE', 'Sergipe');
+INSERT INTO uf (id, sigla, nome) VALUES (17, 'TO', 'Tocantins');
+
+
+--begin
+--	
+--	INSERT INTO pessoa (nome, cpf, email) VALUES ('Pedro Henrique', '00010418270', 'pedro@barbosa.br');
+--	
+--	update pessoa set uf = 53 where id = 3;
+--	
+--	delete from pessoa where id = 10;
+--	
+--	commit;
+--end 
+
+
+# SQL
+select * from pessoa; 
+
+select * from uf;
+
+
+select * from pessoa where email like '%@gmail.com'
+
+select * from pessoa where nome ilike '%silva%'
+
+select cpf from pessoa where upper(nome) like '%LIMA%'
+
+select * from pessoa where nome ilike 'Átila'
+
+select p.*, u.* from pessoa as p join uf u on p.uf = u.id where p.nome ilike '%silva%'
+
+# DML
+
+update pessoa set uf = 53 where id = 3;
+
+delete from pessoa where id = 10;
