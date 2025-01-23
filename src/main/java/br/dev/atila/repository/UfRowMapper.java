@@ -6,18 +6,16 @@ import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
-import br.dev.atila.model.Pessoa;
+import br.dev.atila.model.UF;
 
 @Component
-public class PessoaRowMapper implements RowMapper<Pessoa> {
+public class UfRowMapper implements RowMapper <UF> {
 
-	@Override
-	public Pessoa mapRow(ResultSet rs, int rowNum) throws SQLException {
-		return Pessoa.builder()
+	public UF mapRow(ResultSet rs, int rowNum) throws SQLException {
+		return UF.builder()
 			.id(rs.getInt("id"))
 			.nome(rs.getString("nome"))
-			.cpf(rs.getString("cpf"))
-			.email(rs.getString("email"))
+			.sigla(rs.getString("sigla"))
 			.build();
 	}
 	

@@ -1,16 +1,10 @@
 package br.dev.atila.repository;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.sql.DataSource;
-
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCallback;
 import org.springframework.stereotype.Repository;
 
 import br.dev.atila.model.Pessoa;
@@ -22,9 +16,72 @@ public class PessoaRepository {
 	
 	private final JdbcTemplate jdbcTemplate;
 	private final PessoaRowMapper pessoaRowMapper;
+	private final PessoaResultSetExtractor pessoaResultSetExtractor;
 	
 	public List<Pessoa> recuperarTodos() throws SQLException {
 		return jdbcTemplate.query("select * from pessoa", pessoaRowMapper);
+		
+	}
+	
+	
+	
+	
+	public Integer salvar(Pessoa pessoa) {
+		
+		
+		return jdbcTemplate.execute("insert into pessoa (nome, cpf, email) values (?, ?, ?);", (PreparedStatementCallback<Integer>) ps -> {
+			
+			String nome = pessoa.getNome();
+			
+			ps.setString(1, nome);
+		 	ps.setString(2, pessoa.getCpf());
+		 	ps.setString(3, pessoa.getEmail());
+		 	
+		 	return ps.executeUpdate();
+		});
+	 }
+	
+	
+	
+	public Integer deletar(Integer id) {
+		
+		return jdbcTemplate.execute("delete from pessoa where id = ?;", (PreparedStatementCallback<Integer>) ps -> {
+			
+			ps.setInt(1, id);
+		 	
+			return ps.executeUpdate();
+		});
+			
+	}
+	
+	
+	
+	public Integer atualizar(Pessoa pessoa, Integer id) {
+		
+		return jdbcTemplate.execute("update pessoa set nome = ?, cpf = ?, email = ? where id = ?;", (PreparedStatementCallback<Integer>) ps -> {
+			
+			String atualizarDados = pessoa.getNome();
+			
+			ps.setString(1, atualizarDados);
+		 	ps.setString(2, pessoa.getCpf());
+		 	ps.setString(3, pessoa.getEmail());
+		 	ps.setInt(4, id);
+			
+			return ps.executeUpdate();	
+		});
+	}
+	
+	
+	public Pessoa recuperar(Integer id) {
+		final var sql = "select * from pessoa where id = ?";
+		
+		Pessoa p = jdbcTemplate.query(
+				sql, 
+				ps -> ps.setInt(1, id), 
+				pessoaResultSetExtractor
+			);
+		
+		return p;
 	}
 	
 

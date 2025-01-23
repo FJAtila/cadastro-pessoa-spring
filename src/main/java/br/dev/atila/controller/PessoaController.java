@@ -37,34 +37,37 @@ public class PessoaController {
 	
 	@GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Pessoa> recuperarPorId(@PathVariable Integer id) {
-		//TODO: implementar
-		return null;
+		final var pessoa = pessoaService.recuperar(id);
+		return ResponseEntity.ok(pessoa);
 	}
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> cadastrarPessoa(@RequestBody Pessoa pessoa) {
 		
-		Integer id = 0; //TODO: implementar
+		Integer id = pessoaService.criar(pessoa); 
 		
 		final var uri = ServletUriComponentsBuilder
 				.fromCurrentRequest()
 				.path("/{id}")
 				.buildAndExpand(id)
 				.toUri();
-		
 		return ResponseEntity.created(uri).build();
 	}
 	
+	
+	
 	@PutMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Pessoa> atualizar(@RequestBody Pessoa pessoa, @PathVariable Integer id) {
-		//TODO: implementar
-		return null;
+		pessoaService.atualizar(pessoa, id);
+		return ResponseEntity.ok().build() ;
 	}
+	
+	
 	
 	@DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Pessoa> deletar(@PathVariable Integer id) {
-		//TODO: implementar
-		return null;
+		pessoaService.deletar(id);
+		return ResponseEntity.ok().build() ;
 	}
 	
 
