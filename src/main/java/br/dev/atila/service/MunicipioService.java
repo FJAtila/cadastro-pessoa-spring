@@ -1,11 +1,14 @@
 package br.dev.atila.service;
 
-import java.sql.SQLException;
 import java.util.List;
+
 import org.springframework.stereotype.Service;
-import br.dev.atila.model.Municipio;
+
+import br.dev.atila.dto.MunicipioDTO;
+import br.dev.atila.dto.UfDTO;
+import br.dev.atila.entity.MunicipioEntity;
+import br.dev.atila.entity.UfEntity;
 import br.dev.atila.repository.MunicipioRepository;
-import br.dev.atila.repository.MunicipioRowMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,29 +18,37 @@ import lombok.extern.slf4j.Slf4j;
 public class MunicipioService {
 
 	private final MunicipioRepository municipioRepository;
-	private final MunicipioRowMapper municipioRowMapper;
 	
-	
-	//public List<Municipio> recuperarMunicipio() {
+	public List<MunicipioDTO> recuperarUf(Integer uf) {
 		
-	//	try {
-	//		return municipioRepository.recuperarMunicipio();
-	//	} catch (SQLException e) {
-	//		log.error("Ocorreu erro ao buscar no banco de dados!", e);
-	//		throw new RuntimeException(e);
-	//	}
-//	}
-	
-	
-	
-	public List<Municipio> recuperarUf(Integer uf) {
+		final UfEntity ufe = new UfEntity();
+		ufe.setId(uf);
 		
-		if (uf > 0) {
-			return municipioRepository.recuperarMunicipiosPoruf(uf);
-		}
+		return municipioRepository.findAllByUfOrderByNome(ufe)
+				.map(m -> MunicipioDTO.builder()
+						.id(m.getId())
+						.nome(m.getNome())
+						.uf(UfDTO.builder()
+								.id(m.getUf().getId())
+								.nome(m.getUf().getNome())
+								.sigla(m.getUf().getSigla())
+								.build())
+						.build())
+				.toList();
 		
-		else {
-			throw new RuntimeException("uf não existem no banco de dados");
-	    }
     }
+
+	public MunicipioDTO recuperarPorId(Integer id) {
+		final MunicipioEntity entity = municipioRepository.findById(id).orElseThrow();
+		return MunicipioDTO.builder()
+				.id(entity.getId())
+				.nome(entity.getNome())
+				.uf(UfDTO.builder()
+						.id(entity.getUf().getId())
+						.nome(entity.getUf().getNome())
+						.sigla(entity.getUf().getSigla())
+						.build())
+				.build();
+
+	}
 }

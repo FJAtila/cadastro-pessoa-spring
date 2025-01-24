@@ -1,9 +1,20 @@
 package br.dev.atila;
 
+import java.beans.PersistenceDelegate;
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.domain.Sort.Order;
+
+import br.dev.atila.entity.UfEntity;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
 
 @MinhaAnotacao(name = "Pedro", ordem = 1)
 @SpringBootApplication
@@ -11,6 +22,8 @@ public class CadastroPessoasSpringApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CadastroPessoasSpringApplication.class, args);
+		
+//		new ExemploEntityManager().teste();
 	}
 	
 	
@@ -132,3 +145,76 @@ class Balde<T extends Quantificavel> {
 	
 	
 }
+
+
+
+class ExemploEntityManager {
+	
+	void teste() {
+		
+		final EntityManagerFactory emf = Persistence.createEntityManagerFactory("cadastroPessoaPU");
+		
+		final EntityManager em = emf.createEntityManager();
+		
+		final UfEntity uf = em.find(UfEntity.class, 53);
+		
+//		final UfEntity zz = new UfEntity();
+//		zz.setId(99);
+//		zz.setNome("Zona Zica");
+//		zz.setSigla("ZZ");
+//		
+//		final var transaction = em.getTransaction();
+//		transaction.begin();
+//		
+//		em.persist(zz);
+//		
+//		transaction.commit();
+		
+		final TypedQuery<UfEntity> query = em.createQuery("SELECT a FROM UfEntity a WHERE a.id = :xurupitas", UfEntity.class);
+		query.setParameter("xurupitas", 31);
+		
+		final var df = query.getSingleResult();
+		
+		final TypedQuery<UfEntity> outraQuery = em.createQuery("SELECT a FROM UfEntity a WHERE a.nome LIKE :umNome", UfEntity.class);
+		outraQuery.setParameter("umNome", "%ia%");
+		
+		final var ufs = outraQuery.getResultList();
+		
+		final var cb = em.getCriteriaBuilder();
+		final var criteriaQuery = cb.createQuery(UfEntity.class);
+		criteriaQuery.from(UfEntity.class);
+		
+		final var todasUfs = em.createQuery(criteriaQuery).getResultList();
+		
+		
+		System.out.println(df);
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

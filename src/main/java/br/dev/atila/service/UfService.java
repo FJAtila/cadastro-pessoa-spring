@@ -1,9 +1,11 @@
 package br.dev.atila.service;
 
-import java.sql.SQLException;
 import java.util.List;
+
 import org.springframework.stereotype.Service;
-import br.dev.atila.model.UF;
+
+import br.dev.atila.dto.UfDTO;
+import br.dev.atila.entity.UfEntity;
 import br.dev.atila.repository.UfRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,40 +17,35 @@ public class UfService {
 
 	private final UfRepository ufRepository;
 
-	public List<UF> recuperarTodos() {
-		try {
-			return ufRepository.recuperarTodos();
-		} catch (SQLException e) {
-			log.error("Ocorreu erro ao buscar no banco de dados!", e);
-			throw new RuntimeException(e);
-		}
+	public List<UfDTO> recuperarTodos() {
+		return ufRepository.findAll()
+				.stream()
+				.map(e -> UfDTO.builder()
+						.id(e.getId())
+						.nome(e.getNome())
+						.sigla(e.getSigla())
+						.build()
+				)
+				.toList();
 	}
 
-	public UF recuperar(Integer id) {
-			
-			if (id > 0) {
-				
-				return ufRepository.recuperar(id);
-			}
-			
-			else {
-				
-				throw new RuntimeException("id não existem no banco de dados");
-		   }
+	public UfDTO recuperar(Integer id) {
+		final UfEntity entity =  ufRepository.findById(id).orElseThrow();
+		return UfDTO.builder()
+				.id(entity.getId())
+				.nome(entity.getNome())
+				.sigla(entity.getSigla())
+				.build();
 	}
 	
 
-	public UF recuperarSigla(String sigla) {
+	public UfDTO recuperarPorSigla(String sigla) {
+		final UfEntity entity = ufRepository.findBySigla(sigla).orElseThrow();
+		return UfDTO.builder()
+				.id(entity.getId())
+				.nome(entity.getNome())
+				.sigla(entity.getSigla())
+				.build();
 
-		if (sigla != null) {
-
-			return ufRepository.recuperarSigla(sigla);
-		}
-
-		else {
-
-			throw new RuntimeException("sigla não existem no banco de dados");
-
-		}
 	}
 }

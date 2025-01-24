@@ -1,20 +1,18 @@
-package br.dev.atila.model;
+package br.dev.atila.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-
+@Data
 @Builder
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UF {
-
-	private String nome;
+public class MunicipioDTO {
+	
 	private Integer id;
-	private String sigla;
+	private String nome;
+	private UfDTO uf;
+
 }

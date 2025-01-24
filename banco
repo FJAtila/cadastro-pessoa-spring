@@ -150,16 +150,26 @@ INSERT INTO uf (id, sigla, nome) VALUES (28, 'SE', 'Sergipe');
 INSERT INTO uf (id, sigla, nome) VALUES (17, 'TO', 'Tocantins');
 
 
---begin
---	
---	INSERT INTO pessoa (nome, cpf, email) VALUES ('Pedro Henrique', '00010418270', 'pedro@barbosa.br');
---	
---	update pessoa set uf = 53 where id = 3;
---	
---	delete from pessoa where id = 10;
---	
---	commit;
---end 
+begin
+	
+	INSERT INTO pessoa (nome, cpf, email) VALUES ('Pedro Henrique', '00010418270', 'pedro@barbosa.br');
+	
+	update pessoa set uf = 53 where id = 3;
+	
+	delete from pessoa where id = 10;
+	
+	select * from pessoa where email like '%@gmail.com'
+	
+	if (dfdfgdg)
+		rollback;
+	
+	
+	update pessoa set uf = 53 where id = 3;
+	
+	delete from pessoa where id = 10;
+	
+	commit;
+end 
 
 
 # SQL
